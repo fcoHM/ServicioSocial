@@ -1,143 +1,105 @@
-# Servicio Social – Comparativa de Modelos de Visión Computacional para Clasificación de Contaminantes en Cosechas de Chile 🌶️
+# Servicio Social – Comparativa de Modelos de Visión Computacional para Detección de Contaminantes en Cosechas de Chile 🌶️
 
-Este repositorio contiene el desarrollo de mi **servicio social**, cuyo objetivo es realizar una **comparativa de distintos modelos de visión por computadora** aplicados a la **clasificación de contaminantes en cosechas de chile**.
+Este repositorio contiene el desarrollo de mi **servicio social**, cuyo objetivo es realizar una **comparativa de modelos de visión computacional para detección de objetos**, aplicados a la **detección de contaminantes en cosechas de chile**.
 
-El proyecto evalúa el desempeño de múltiples arquitecturas de **deep learning para clasificación de imágenes**, utilizando un **dataset proporcionado por una escuela colaboradora**, con el fin de determinar qué modelo resulta más eficaz para esta tarea agrícola específica.
+El proyecto evalúa el desempeño de distintas arquitecturas de **detección de objetos**, utilizando un **dataset proporcionado por una escuela colaboradora**, con el fin de identificar qué modelo ofrece mejores resultados para este problema específico.
 
 ---
 
-## Objetivo del Proyecto
+## Objetivo
 
-- Evaluar y comparar diferentes modelos de **clasificación de imágenes**.
-- Analizar el impacto del **ajuste de hiperparámetros** en el desempeño de cada modelo.
-- Determinar la arquitectura más adecuada para la detección de contaminantes en cosechas de chile.
-- Documentar los resultados de forma **reproducible y estructurada**.
+- Detectar la **presencia de contaminantes** en imágenes de cosechas de chile.
+- Localizar los contaminantes dentro de la imagen.
+- Comparar distintos **modelos de detección de objetos**.
+- Evaluar el efecto del ajuste de hiperparámetros.
 
 ---
 
 ## Metodología
 
-El proyecto se desarrolla siguiendo la metodología **CRISP-DM (Cross Industry Standard Process for Data Mining)**, la cual permite un enfoque iterativo y experimental adecuado para proyectos de visión computacional.
+Se utiliza la metodología **CRISP-DM**, aplicada de forma experimental:
 
-Las fases aplicadas son:
-
-1. **Comprensión del problema**
-2. **Comprensión de los datos**
-3. **Preparación de los datos**
-4. **Modelado**
-5. **Evaluación**
-6. **Documentación de resultados**
+1. Comprensión del problema  
+2. Comprensión de los datos  
+3. Preparación de los datos  
+4. Modelado  
+5. Evaluación  
+6. Documentación de resultados  
 
 ---
 
 ## Dataset
 
-- Tipo: Imágenes de cosechas de chile
-- Etiquetas: Presencia de distintos tipos de contaminantes
-- Origen: Escuela colaboradora
-- Uso: Exclusivamente académico y de investigación
-
+- Imágenes de cosechas de chile  
+- Múltiples instancias por imagen  
+- Uso académico  
 
 ---
 
-## Modelos de Clasificación Utilizados
+## Enfoque del Problema
 
-En este proyecto se emplean modelos disponibles en librerías oficiales de visión computacional, con y sin pesos preentrenados.  
-Los modelos evaluados incluyen:
+El problema se aborda como **detección de objetos**, no como clasificación.  
+El objetivo es identificar **si existen contaminantes y su ubicación** dentro de la imagen.
 
-- **AlexNet**
-- **ConvNeXt**
-- **DenseNet**
-- **EfficientNet**
-- **EfficientNetV2**
-- **GoogLeNet**
-- **Inception V3**
-- **MaxVit**
-- **MNASNet**
-- **MobileNet V2**
-- **MobileNet V3**
-- **RegNet**
-- **ResNet**
-- **ResNeXt**
-- **ShuffleNet V2**
-- **SqueezeNet**
-- **Swin Transformer**
-- **VGG**
-- **Vision Transformer (ViT)**
-- **Wide ResNet**
+---
 
-Estos modelos permiten comparar arquitecturas:
-- Convolucionales clásicas
-- Redes profundas modernas
-- Modelos ligeros para dispositivos con recursos limitados
-- Transformers aplicados a visión computacional
+## Modelos de Detección Evaluados
+
+Los modelos evaluados en este repositorio son:
+
+- **YOLO**
+- **Faster R-CNN**
+- **SSD**
+- **RetinaNet**
+- **EfficientDet**
+
+Los siguientes modelos forman parte del trabajo realizado por mi compañero en un [repositorio](https://github.com/JaimeRob23/Servicio_Social) independiente:
+
+- **DETR**
+- **Deformable DETR**
+- **FCOS**
+- **CenterNet**
+- **Mask R-CNN**
 
 ---
 
 ## Ajuste de Hiperparámetros
 
-Para cada modelo se experimenta con distintos hiperparámetros, tales como:
-
-- Learning rate
-- Batch size
-- Número de epochs
-- Optimizador
-- Tamaño de imagen de entrada
-
-El objetivo es analizar cómo estos parámetros influyen en el rendimiento del modelo.
+- Learning rate  
+- Batch size  
+- Número de epochs  
+- Tamaño de imagen de entrada  
 
 ---
 
 ## Métricas de Evaluación
 
-El desempeño de los modelos se evalúa mediante métricas estándar de clasificación:
+Para validar el desempeño de los modelos de **detección de objetos**, se utilizan las siguientes métricas:
 
-- Accuracy
-- Precision
-- Recall
-- F1-score
-- Matriz de confusión
-- Curvas de entrenamiento (loss y accuracy)
+- **IoU (Intersection over Union)**  
+  Mide qué tan bien se ajusta la caja detectada por el modelo a la caja real del objeto.  
+  Un valor más alto indica una mejor localización.
 
-Estas métricas permiten una comparación objetiva entre las arquitecturas evaluadas.
+- **Precision**  
+  Indica qué porcentaje de las detecciones realizadas por el modelo son correctas.  
+  Ayuda a medir la cantidad de falsas detecciones.
 
----
+- **Recall**  
+  Indica qué porcentaje de los objetos reales fueron detectados por el modelo.  
+  Mide la capacidad del modelo para encontrar todos los objetos presentes.
 
-## Resultados
+- **mAP (mean Average Precision)**  
+  Es la métrica principal en detección de objetos.  
+  Resume el desempeño general del modelo combinando precisión, recall y calidad de localización.
 
-Los resultados obtenidos se documentan mediante:
-- Tablas comparativas de métricas
-- Gráficas de entrenamiento
-- Análisis cualitativo y cuantitativo
-
-El modelo con mejor desempeño será propuesto como la solución más adecuada para el problema planteado.
+Estas métricas permiten comparar objetivamente los distintos modelos evaluados.
 
 ---
 
-## Tecnologías Utilizadas
+## Autores
 
-- Python
-- PyTorch / TorchVision
-- NumPy
-- Matplotlib / Seaborn
-- Jupyter Notebook
+**José Francisco Hurtado Muro**  
+Ingeniería de Software – Universidad Autónoma de Zacatecas  
 
----
-
-## Consideraciones Finales
-
-Este proyecto tiene fines **académicos** y forma parte del cumplimiento del servicio social.  
-Los resultados obtenidos pueden servir como base para futuras investigaciones en el área de **agricultura inteligente y visión por computadora**.
-
----
-
-## Autor
-
-**José Francisco Hurtado Muro** 
-Ingeniería de Software  
-Universidad Autónoma de Zacatecas
-
-**Jaime Gabriel Robles Felix** 
-Ingeniería de Software  
-Universidad Autónoma de Zacatecas  
-
+**Jaime Gabriel Robles Felix**  
+Ingeniería de Software – Universidad Autónoma de Zacatecas  
