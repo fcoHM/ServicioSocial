@@ -1,0 +1,14 @@
+# Ruta base del dataset
+path: /content/contaminante
+
+# Rutas relativas a "path"
+train: train/images
+val: valid/images
+test: test/images
+
+# Número de clases
+nc: 1
+
+# Nombre de la clase
+names:
+  - contaminante
